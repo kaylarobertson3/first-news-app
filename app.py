@@ -1,5 +1,6 @@
 import csv
 from flask import Flask
+from flask import abort
 from flask import render_template
 # always use an undersscore with python variables
 app = Flask(__name__)
@@ -30,6 +31,7 @@ def detail(row_id):
     for row in object_list:
         if row['id'] == row_id:
             return render_template(template, object=row)
+    abort(404)
 
 # if this script is run from the command line... also, if statements need to end with a colon...
 if __name__ == "__main__":
